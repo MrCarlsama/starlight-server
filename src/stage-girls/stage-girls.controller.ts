@@ -15,4 +15,9 @@ export class StageGirlsController {
   async save(@Body() stageGirls: StageGirls[]): Promise<object> {
     return await this.stageGirlsService.save(stageGirls);
   }
+
+  @Post('/Async')
+  async async(): Promise<object> {
+    return await this.stageGirlsService.async();
+  }
 }

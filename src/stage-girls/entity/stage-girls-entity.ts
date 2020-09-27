@@ -12,7 +12,7 @@ import { StageGirlsAttribute } from './stage-girls-attribute.entity';
 export class StageGirls {
   // Id
   @PrimaryGeneratedColumn()
-  Id: number;
+  Id?: number;
 
   // 内部Id
   @Column()
