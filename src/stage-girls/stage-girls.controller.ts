@@ -1,4 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { Memoris } from './entity/memoris.entity';
 import { StageGirls } from './entity/stage-girls-entity';
 import { StageGirlsService } from './stage-girls.service';
 
@@ -6,18 +7,25 @@ import { StageGirlsService } from './stage-girls.service';
 export class StageGirlsController {
   constructor(private readonly stageGirlsService: StageGirlsService) {}
 
-  @Post('/GetList')
-  async getList(): Promise<StageGirls[]> {
-    return await this.stageGirlsService.getList();
+  // 获取 - 舞台少女
+  @Post('/GetListByStageGirls')
+  async getListByStageGirls(): Promise<StageGirls[]> {
+    return await this.stageGirlsService.getListByStageGirls();
   }
 
-  @Post('/Save')
-  async save(@Body() stageGirls: StageGirls[]): Promise<object> {
-    return await this.stageGirlsService.save(stageGirls);
+  // 获取 - 礼装
+  @Post('/GetListByMemoris')
+  async getListByMemoris(): Promise<Memoris[]> {
+    return await this.stageGirlsService.getListByMemoris();
   }
+
+  // @Post('/Save')
+  // async save(@Body() stageGirls: StageGirls[]): Promise<object> {
+  //   return await this.stageGirlsService.saveStageGirls(stageGirls);
+  // }
 
   @Post('/Async')
-  async async(): Promise<object> {
-    return await this.stageGirlsService.async();
+  async async(@Body() Option = { isAll: false }): Promise<object> {
+    return await this.stageGirlsService.async(Option.isAll);
   }
 }

@@ -34,6 +34,10 @@ export class StageGirls {
   @Column()
   CharacterName: string;
 
+  // 时间戳
+  @Column()
+  Timestamp: number;
+
   // 角色属性
   @OneToOne(type => StageGirlsAttribute)
   @JoinColumn()
